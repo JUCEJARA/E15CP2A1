@@ -26,6 +26,8 @@ class HistoriesController < ApplicationController
   def create
     @history = History.new(history_params)
 
+    @history.user = current_user
+
     respond_to do |format|
       if @history.save
         format.html { redirect_to @history, notice: 'History was successfully created.' }
